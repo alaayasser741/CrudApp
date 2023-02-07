@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-class ListCourse extends Component {
-    state = {}
-    render() {
+function ListCourse (props) {
         return (
             <>
-                <li>{this.props.details.name}</li>
+                <li>{props.details.name}</li>
             </>
         );
-    }
+    
 }
 
 export default ListCourse;

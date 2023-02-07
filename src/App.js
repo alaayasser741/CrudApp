@@ -4,26 +4,24 @@ import CourseForm from "./components/Form/form";
 import ListCourse from "./components/List/list";
 class App extends Component {
   state = {
-    courses :[
-      {name:'HTML'},
-      {name:'CSS'},
-      {name:'React'}
-    ]
+    courses: [{ name: "HTML" }, { name: "CSS" }, { name: "React" }],
   };
   render() {
-    let {courses} = this.state;
-    let coursesList = courses.map((course,index) =>{
-      return(
-        <ListCourse details={course} key={index}/>
-      )
-    })
+    const addCourse = (item) => {
+      let courses = this.state.courses;
+      courses.push(item)
+      this.setState({courses});
+      console.log(courses);
+    };
+    let { courses } = this.state;
+    let coursesList = courses.map((course, index) => {
+      return <ListCourse details={course} key={index} />;
+    });
     return (
       <div className="App">
         <h1>Add Course</h1>
-        <CourseForm />
-        <ul>
-        {coursesList}
-        </ul>
+        <CourseForm addCourse={addCourse} />
+        <ul>{coursesList}</ul>
       </div>
     );
   }
