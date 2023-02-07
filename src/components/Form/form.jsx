@@ -1,5 +1,5 @@
 import { Component } from "react"
-
+import './form.css'
 class CourseForm extends Component {
     state = {
         name: ""
@@ -18,7 +18,7 @@ class CourseForm extends Component {
             })
         }
         return (
-            <form onSubmit={handleSubmit}>
+            <form className="AddForm" onSubmit={handleSubmit}>
                 <input onChange={handleChange} type="text" value={this.state.name} />
                 <button type="submit">Add course</button>
             </form>

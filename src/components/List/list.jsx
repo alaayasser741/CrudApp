@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import './list.css'
 class ListCourse extends Component {
     state = {
         isEdit: false
     }
     renderCourse = () => {
         return (
-            <li>
+            <li className="Item">
                 <span>{this.props.details.name}</span>
+                <div className="btns">
                 <button onClick={() => { this.toggleState() }}>Edit Course</button>
                 <button onClick={() => { this.props.deleteCourse(this.props.index) }}>Delete Course</button>
+                </div>
             </li>
         );
     }
@@ -21,7 +24,7 @@ class ListCourse extends Component {
     }
     renderUpdateForm = () => {
         return (
-            <form onSubmit={this.updateCourseItem}>
+            <form onSubmit={this.updateCourseItem} className='formEdit'>
                 <input ref={(v) => { this.input = v }} defaultValue={this.props.details.name} type="text" />
                 <button>Update</button>
             </form>
