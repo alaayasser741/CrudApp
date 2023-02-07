@@ -6,16 +6,31 @@ class App extends Component {
   state = {
     courses: [{ name: "HTML" }, { name: "CSS" }, { name: "React" }],
   };
+  deleteCourse = (index) => {
+    let { courses } = this.state;
+    // courses.splice(index,1); //Other Way 
+    let newCourses = courses.filter((course) => {
+      return courses.indexOf(course) !== index;
+    });
+    this.setState({ courses:newCourses });
+  };
   render() {
     const addCourse = (item) => {
       let courses = this.state.courses;
-      courses.push(item)
-      this.setState({courses});
+      courses.push(item);
+      this.setState({ courses });
       console.log(courses);
     };
     let { courses } = this.state;
     let coursesList = courses.map((course, index) => {
-      return <ListCourse details={course} key={index} />;
+      return (
+        <ListCourse
+          details={course}
+          key={index}
+          deleteCourse={this.deleteCourse}
+          index={index}
+        />
+      );
     });
     return (
       <div className="App">

@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-function ListCourse (props) {
+class ListCourse extends Component {
+    renderCourse = () => {
+        return (
+            <li>
+                <span>{this.props.details.name}</span>
+                <button onClick={() => { this.props.deleteCourse(this.props.index) }}>Delete Course</button>
+            </li>
+        );
+    }
+    render() {
         return (
             <>
-                <li>{props.details.name}</li>
+                {this.renderCourse()}
             </>
         );
-    
+    }
 }
 
 export default ListCourse;
