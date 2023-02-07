@@ -6,6 +6,8 @@ class App extends Component {
   state = {
     courses: [{ name: "HTML" }, { name: "CSS" }, { name: "React" }],
   };
+
+    // Delete Function
   deleteCourse = (index) => {
     let { courses } = this.state;
     // courses.splice(index,1); //Other Way 
@@ -14,6 +16,14 @@ class App extends Component {
     });
     this.setState({ courses:newCourses });
   };
+
+    // Edit Function
+    EditItem = (index,newValue)=>{
+      let {courses} = this.state;
+      let course = courses[index]
+      course["name"] = newValue;
+      this.setState({courses})
+    }
   render() {
     const addCourse = (item) => {
       let courses = this.state.courses;
@@ -29,6 +39,7 @@ class App extends Component {
           key={index}
           deleteCourse={this.deleteCourse}
           index={index}
+          EditItem={this.EditItem}
         />
       );
     });
