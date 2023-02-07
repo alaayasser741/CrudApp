@@ -3,9 +3,9 @@ class ListCourse extends Component {
     state = {}
     render() {
         return (
-            <div>
-                list
-            </div>
+            <>
+                <li>{this.props.details.name}</li>
+            </>
         );
     }
 }
